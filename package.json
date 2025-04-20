@@ -1,20 +1,24 @@
 {
-  "name": "sympoiesis-site",
+  "name": "sympoiesis-article-demo",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "convert": "tsx scripts/convert-json-to-mdx.ts"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/mdx": "^3.0.0",
-    "astro": "^4.0.0",
-    "glob": "^11.0.1",
-    "path": "^0.12.7"
+    "@astrojs/mdx": "^4.2.4",
+    "@astrojs/node": "^9.2.0",
+    "astro": "^5.7.4",
+    "glob": "^11.0.1"
   },
   "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^22.14.1",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "3.4.1",
     "tsx": "^4.6.2"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"

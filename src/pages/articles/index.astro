@@ -1,0 +1,59 @@
+---
+export const prerender = true;
+const articles = await Astro.glob('../../../content/articles/*.mdx');
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sympoiesis: Discourse Archive</title>
+  </head>
+  <body class="prose mx-auto p-8">
+    <h1>Sympoiesis: Discourse Archive</h1>
+
+    {articles.length === 0 ? (
+      <p>尚無語場封存體</p>
+    ) : (
+      <ul>
+        {articles.map((a) => (
+          <li>
+            <a href={`/articles/${a.url.split('/').pop().replace('.mdx', '')}`}>
+              {a.frontmatter.title}
+            </a>
+            <br />
+            <small>{a.frontmatter.date} • {a.frontmatter.semantic_field}</small>
+          </li>
+        ))}
+      </ul>
+    )}
+  </body>
+</html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sympoiesis: Discourse Archive</title>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
+    <main class="max-w-5xl mx-auto py-12 px-4">
+      <h1 class="text-4xl font-bold mb-8 text-center">Sympoiesis: Discourse Archive</h1>
+
+      {articles.length === 0 ? (
+        <p class="text-center text-gray-500">尚無語場封存體</p>
+      ) : (
+        <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {articles.map((a) => {
+            const slug = a.url.split('/').pop().replace('.mdx', '');
+            return (
+              <a href={`/articles/${slug}`} class="block bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+                <h2 class="text-xl font-semibold mb-2">{a.frontmatter.title}</h2>
+                <p class="text-sm text-gray-600 mb-1">{a.frontmatter.date} • {a.frontmatter.semantic_field}</p>
+                <p class="text-xs text-gray-500">{a.frontmatter.tags?.join(', ')}</p>
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </main>
+  </body>
+</html>

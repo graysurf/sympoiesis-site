@@ -1,0 +1,22 @@
+---
+export async function getStaticPaths() {
+  const articles = await Astro.glob('../../../content/articles/*.mdx');
+  return articles.map((article) => {
+    const slug = article.url.split('/').pop().replace('.mdx', '');
+    return { params: { id: slug } };
+  });
+}
+
+const { id } = Astro.params;
+const articles = await Astro.glob('../../../content/articles/*.mdx');
+
+const matched = articles.find((a) => a.url.includes(`${id}.mdx`));
+if (!matched) throw new Error(`Article ${id} not found`);
+
+const { default: Page, frontmatter } = await matched;
+const Layout = (await import('../../../src/layouts/ArticleLayout.astro')).default;
+---
+
+<Layout {...frontmatter}>
+  <Page />
+</Layout>

@@ -1,0 +1,16 @@
+---
+const { title, date, tags, semantic_field } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+  </head>
+  <body class="prose mx-auto p-8">
+    <h1>{title}</h1>
+    <p><strong>Date:</strong> {date} • <strong>Semantic Field:</strong> {semantic_field}</p>
+    <p>{tags?.join(", ")}</p>
+    <slot />
+  </body>
+</html>
