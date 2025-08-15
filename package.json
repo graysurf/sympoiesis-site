@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.4",
-    "@astrojs/node": "^9.2.0",
+    "@astrojs/node": "^9.4.1",
     "astro": "^5.7.4",
     "glob": "^11.0.1"
   },
